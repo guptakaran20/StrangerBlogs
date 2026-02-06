@@ -164,19 +164,19 @@ export default function Login2Card({
                   type="password"
                   placeholder="Password"
                   className={`w-full bg-gray-800 border p-3 rounded
-    ${errors.password || authError ? "border-red-500" : "border-gray-700"}`}
-                  {...register("password", { required: "Password required" })}
+    ${errors.loginpassword || authError ? "border-red-500" : "border-gray-700"}`}
+                  {...register("loginpassword", { required: "Password required" })}
                 />
 
                 {/* react-hook-form error */}
-                {errors.password && (
+                {errors.loginpassword && (
                   <p className="text-xs text-red-400 mt-1">
-                    {errors.password.message}
+                    {errors.loginpassword.message}
                   </p>
                 )}
 
                 {/* backend auth error */}
-                {authError && !errors.password && (
+                {authError && !errors.loginpassword && (
                   <p className="text-xs text-red-400 mt-1 animate-fadeIn">
                     {authError}
                   </p>
@@ -232,6 +232,19 @@ export default function Login2Card({
     ${errors.password ? "border-red-500" : "border-gray-700"}`}
                   {...register("password", { required: "Password required" })}
                 />
+
+                {errors.password && (
+  <p className="text-xs text-red-400 mt-1">
+    {errors.password.message}
+  </p>
+)}
+
+
+                {authError && (
+  <p className="text-xs text-red-400 mt-1 animate-fadeIn">
+    {authError}
+  </p>
+)}
 
                 <button
                   className="w-full bg-green-600 py-3 rounded font-medium

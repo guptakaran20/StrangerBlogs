@@ -35,7 +35,7 @@ export default function Login() {
     try {
       await authservice.login({
         email: data.email.trim(),
-        password: data.password,
+        password: data.loginpassword,
       });
 
       const user = await authservice.getCurrentUser();
@@ -72,7 +72,9 @@ export default function Login() {
 
     } catch (err) {
       console.error(err);
-      setError(err.message || "Signup failed");
+      setAuthError(
+    err?.message || "An account with this email already exists"
+  );
     }
   };
 
